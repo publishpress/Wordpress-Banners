@@ -22,7 +22,7 @@
 
 if(!class_exists('PP_WP_Banners')) {
 
-    define('PP_WP_BANNERS_LOADED', '1.0.0');
+    define('PP_WP_BANNERS_VERSION', '1.0.0');
 
     class PP_WP_Banners
     {
@@ -80,7 +80,7 @@ if(!class_exists('PP_WP_Banners')) {
                 'pp-wordpress-banners-style',
                 plugin_dir_url( __FILE__ ) . '/assets/css/style.css',
                 false,
-                PP_WP_BANNERS_LOADED
+                PP_WP_BANNERS_VERSION
             );
         }
     }
