@@ -22,66 +22,99 @@
 
 if(!class_exists('PP_WP_Banners')) {
 
-    define('PP_WP_BANNERS_VERSION', '1.0.0');
+    define('PP_WP_BANNERS_VERSION', '1.1.0');
 
     class PP_WP_Banners
     {
 
         /**
-         * HTML output to display banner to install Pwrmissions
+         * HTML output banner inviting to install another PublishPress plugin or advertise a feature
          *
-         * @param string    $text_domain        Text domain of the plugin where the banner is displayed
-         * @param boolean   $display_heading    Display 'Recommendations for you' heading
+         * @param string    $heading        Custom heading; disabled if blank
+         * @param string    $title          Custom title; disabled if blank
+         * @param array     $content        Content to display. e.g. Featurelist or a single paragraph
+         * @param string    $link           Link to apply to button and image
+         * @param string    $link_title     Link title
+         * @param string    $image          A filename from assets/images/ folder; disabled if blank
          *
          * @return void
          */
-        public function pp_install_permissions_banner( $text_domain, $display_heading = true ) {
-            if( $display_heading ) {
-			?>
-			<p class="nav-tab-wrapper pp-recommendations-heading">
-				<?php _e( 'Recommendations for you', $text_domain ) ?>
-			</p>
-            <?php } ?>
+        public function pp_install_banner(
+            $heading = '',
+            $title = '',
+            $contents = array(),
+            $link,
+            $link_title,
+            $image = ''
+        ) {
+            if( !empty($heading) ) {
+                ?>
+    			<p class="nav-tab-wrapper pp-recommendations-heading">
+    				<?php echo $heading ?>
+    			</p>
+                <?php
+            }
+            ?>
+
 			<div class="pp-sidebar-box">
-				<h3>
-					<?php _e( 'Control permissions for individual posts and pages', $text_domain ) ?>
-				</h3>
-				<ul>
-					<li>
-						<?php _e( 'Choose who can read and edit each post.', $text_domain ) ?>
-					</li>
-					<li>
-						<?php _e( 'Allow specific user roles or users to manage each post.', $text_domain ) ?>
-					</li>
-					<li>
-						<?php _e( 'PublishPress Permissions is 100% free to install.', $text_domain ) ?>
-					</li>
-				</ul>
+
+                <?php
+                if( !empty($title) ) {
+                    ?>
+    				<h3>
+    					<?php echo $title ?>
+    				</h3>
+                    <?php
+                }
+
+                if( count($contents) > 1 ) {
+                    ?>
+    				<ul>
+                        <?php
+                        foreach($contents as $content) {
+                            ?>
+        					<li>
+        						<?php echo $content; ?>
+        					</li>
+                            <?php
+                        }
+                        ?>
+    				</ul>
+                    <?php
+                } else {
+                    ?>
+                    <p><?php echo $contents[0] ?></p>
+                    <?php
+                }
+                ?>
+
 				<p>
-					<a class="button button-primary"
-					   href="<?php echo admin_url('plugin-install.php?s=publishpress-ppcore-install&tab=search&type=term') ?>"
-					>
-						<?php _e( 'Click here to install PublishPress Permissions for free', $text_domain ); ?>
+					<a class="button button-primary" href="<?php echo $link ?>">
+						<?php echo $link_title ?>
 					</a>
 				</p>
-				<div class="pp-box-banner-image">
-					<a href="<?php echo admin_url('plugin-install.php?s=publishpress-ppcore-install&tab=search&type=term') ?>">
-						<img src="<?php echo plugin_dir_url( __FILE__ ) . '/assets/images/pp-permissions-install.jpg';?>"
-						title="<?php _e( 'Click here to install PublishPress Permissions for free', $text_domain ); ?>" />
-					</a>
-				</div>
-			</div>
-			<?php
-            $this->pp_load_css();
-		}
 
-        public function pp_load_css() {
+                <?php
+                if(!empty($image) && file_exists(__DIR__  . '/assets/images/' . $image)) {
+                    ?>
+    				<div class="pp-box-banner-image">
+    					<a href="<?php echo $link ?>">
+    						<img src="<?php echo plugin_dir_url(__FILE__) . 'assets/images/' . $image ?>" title="<?php echo $title ?>" />
+    					</a>
+    				</div>
+                    <?php
+                }
+                ?>
+
+			</div>
+
+			<?php
             wp_enqueue_style(
                 'pp-wordpress-banners-style',
-                plugin_dir_url( __FILE__ ) . '/assets/css/style.css',
+                plugin_dir_url( __FILE__ ) . 'assets/css/style.css',
                 false,
                 PP_WP_BANNERS_VERSION
             );
-        }
+		}
     }
 }
