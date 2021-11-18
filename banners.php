@@ -22,7 +22,7 @@
 
 if(!class_exists('PP_WP_Banners')) {
 
-    define('PP_WP_BANNERS_VERSION', '1.1.0');
+    define('PP_WP_BANNERS_VERSION', '1.1.2');
 
     class PP_WP_Banners
     {
