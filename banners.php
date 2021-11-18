@@ -39,7 +39,7 @@ if(!class_exists('PP_WP_Banners')) {
          *
          * @return void
          */
-        public function pp_install_banner(
+        public function pp_display_banner(
             $heading = '',
             $title = '',
             $contents = array(),
