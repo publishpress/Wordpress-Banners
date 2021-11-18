@@ -32,7 +32,7 @@ if(!class_exists('PP_WP_Banners')) {
          *
          * @param string    $heading        Custom heading; disabled if blank
          * @param string    $title          Custom title; disabled if blank
-         * @param array     $content        Content to display. e.g. Featurelist or a single paragraph
+         * @param array     $content        Content to display. e.g. Feature list or a single paragraph
          * @param string    $link           Link to apply to button and image
          * @param string    $link_title     Link title
          * @param string    $image          A filename from assets/images/ folder; disabled if blank
