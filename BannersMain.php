@@ -24,9 +24,9 @@ namespace PublishPress\WordPressBanners;
 
 use Exception;
 
-define('PP_WP_BANNERS_VERSION', '1.2.3');
+define('PP_WP_BANNERS_VERSION', '1.2.4');
 
-class BannersController
+class BannersMain
 {
 
     /**
