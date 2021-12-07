@@ -24,7 +24,7 @@ namespace PublishPress\WordPressBanners;
 
 use Exception;
 
-define('PP_WP_BANNERS_VERSION', '1.2.4');
+define('PP_WP_BANNERS_VERSION', '1.2.5');
 
 class BannersMain
 {
@@ -45,8 +45,8 @@ class BannersMain
         $heading = '',
         $title = '',
         $contents = array(),
-        $link,
-        $link_title,
+        $link = '',
+        $link_title = '',
         $image = ''
     ) {
         if( !empty($heading) ) {
