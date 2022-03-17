@@ -33,12 +33,12 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
         /**
          * HTML output banner inviting to install another PublishPress plugin or advertise a feature
          *
-         * @param string    $heading        Custom heading; disabled if blank
-         * @param string    $title          Custom title; disabled if blank
-         * @param array     $content        Content to display. e.g. Feature list or a single paragraph
-         * @param string    $link           Link to apply to button and image
-         * @param string    $link_title     Link title
-         * @param string    $image          A filename from assets/images/ folder; disabled if blank
+         * @param string $heading Custom heading; disabled if blank
+         * @param string $title Custom title; disabled if blank
+         * @param array $content Content to display. e.g. Feature list or a single paragraph
+         * @param string $link Link to apply to button and image
+         * @param string $link_title Link title
+         * @param string $image A filename from assets/images/ folder; disabled if blank
          *
          * @return void
          */
@@ -50,7 +50,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
             $link_title = '',
             $image = ''
         ) {
-            if( !empty($heading) ) {
+            if (! empty($heading)) {
                 ?>
                 <p class="nav-tab-wrapper pp-recommendations-heading">
                     <?php echo $heading ?>
@@ -62,7 +62,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
             <div class="pp-sidebar-box">
 
                 <?php
-                if( !empty($title) ) {
+                if (! empty($title)) {
                     ?>
                     <h3>
                         <?php echo $title ?>
@@ -70,11 +70,11 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                     <?php
                 }
 
-                if( count($contents) > 1 ) {
+                if (count($contents) > 1) {
                     ?>
                     <ul>
                         <?php
-                        foreach($contents as $content) {
+                        foreach ($contents as $content) {
                             ?>
                             <li>
                                 <?php echo $content; ?>
@@ -98,11 +98,12 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                 </p>
 
                 <?php
-                if(!empty($image) && file_exists(__DIR__  . '/assets/images/' . $image)) {
+                if (! empty($image) && file_exists(__DIR__ . '/assets/images/' . $image)) {
                     ?>
                     <div class="pp-box-banner-image">
                         <a href="<?php echo $link ?>">
-                            <img src="<?php echo plugin_dir_url(__FILE__) . 'assets/images/' . $image ?>" title="<?php echo $title ?>" />
+                            <img src="<?php echo plugin_dir_url(__FILE__) . 'assets/images/' . $image ?>" title="<?php
+                            echo $title ?>"/>
                         </a>
                     </div>
                     <?php
@@ -114,7 +115,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
             <?php
             wp_enqueue_style(
                 'pp-wordpress-banners-style',
-                plugin_dir_url( __FILE__ ) . 'assets/css/style.css',
+                plugin_dir_url(__FILE__) . 'assets/css/style.css',
                 false,
                 PP_WP_BANNERS_VERSION
             );
