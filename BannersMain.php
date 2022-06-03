@@ -94,7 +94,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                 ?>
 
                 <p>
-                    <a class="button button-primary" href="<?php echo $link ?>">
+                    <a class="button pp-button-yellow" href="<?php echo $link ?>">
                         <?php echo $link_title ?>
                     </a>
                 </p>
