@@ -41,6 +41,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
          * @param string $link Link to apply to button and image
          * @param string $link_title Link title
          * @param string $image A filename from assets/images/ folder; disabled if blank
+         * @param string $link_class Link class. e.g. 'button button-secondary'
          *
          * @return void
          */
@@ -50,7 +51,8 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
             $contents = array(),
             $link = '',
             $link_title = '',
-            $image = ''
+            $image = '',
+            $link_class = 'button pp-button-yellow'
         ) {
             if (! empty($heading)) {
                 ?>
@@ -94,7 +96,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                 ?>
 
                 <p>
-                    <a class="button pp-button-yellow" href="<?php echo $link ?>">
+                    <a class="<?php echo $link_class ?>" href="<?php echo $link ?>">
                         <?php echo $link_title ?>
                     </a>
                 </p>
