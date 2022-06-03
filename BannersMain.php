@@ -3,7 +3,7 @@
  * @package PublishPress
  * @author  PublishPress
  *
- * Copyright (c) 2021 PublishPress
+ * Copyright (c) 2022 PublishPress
  *
  * WordPressBanners is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ namespace PublishPress\WordPressBanners;
 use Exception;
 
 if (! defined('PP_WP_BANNERS_VERSION')) {
-    define('PP_WP_BANNERS_VERSION', '1.2.8');
+    define('PP_WP_BANNERS_VERSION', '1.2.9');
 }
 
 if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
@@ -94,7 +94,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                 ?>
 
                 <p>
-                    <a class="button button-primary" href="<?php echo $link ?>">
+                    <a class="button pp-button-yellow" href="<?php echo $link ?>">
                         <?php echo $link_title ?>
                     </a>
                 </p>
