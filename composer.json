@@ -5,12 +5,19 @@
   "license": "GPL-3.0-or-later",
   "homepage": "http://publishpress.com/",
   "require": {
-    "php": ">=5.6.20"
+    "php": ">=5.6.20",
+    "publishpress/wordpress-vendor-assets-handler": "^1.0"
   },
   "authors": [
     {
       "name": "PublishPress",
       "email": "help@publishpress.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/publishpress/wordpress-vendor-assets-handler"
     }
   ],
   "autoload": {
