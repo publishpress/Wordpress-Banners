@@ -4,8 +4,39 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "672399f6b94819b598ef160586b5f23f",
-    "packages": [],
+    "content-hash": "09f4e077607a1f4e29cb20e031acb2a5",
+    "packages": [
+        {
+            "name": "publishpress/wordpress-vendor-assets-handler",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/wordpress-vendor-assets-handler",
+                "reference": "73a3399de638842fe224f5fd321705cae678ab73"
+            },
+            "require": {
+                "php": ">=5.6.20"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "AssetsHandler.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Handle assets from inside the vendor folder.",
+            "homepage": "http://publishpress.com/",
+            "time": "2022-08-15T20:30:28+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
@@ -16,5 +47,5 @@
         "php": ">=5.6.20"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

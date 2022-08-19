@@ -22,7 +22,7 @@
 
 namespace PublishPress\WordPressBanners;
 
-use Exception;
+use PublishPressAssetsHandler\AssetsHandler;
 
 if (! defined('PP_WP_BANNERS_VERSION')) {
     define('PP_WP_BANNERS_VERSION', '1.3.1');
@@ -54,10 +54,13 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
             $image = '',
             $link_class = 'button pp-button-yellow'
         ) {
+            $assetsHandler = AssetsHandler::getInstance();
+
             if (! empty($heading)) {
                 ?>
                 <p class="nav-tab-wrapper pp-recommendations-heading">
-                    <?php echo $heading ?>
+                    <?php
+                    echo $heading ?>
                 </p>
                 <?php
             }
@@ -69,7 +72,8 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                 if (! empty($title)) {
                     ?>
                     <h3>
-                        <?php echo $title ?>
+                        <?php
+                        echo $title ?>
                     </h3>
                     <?php
                 }
@@ -81,7 +85,8 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                         foreach ($contents as $content) {
                             ?>
                             <li>
-                                <?php echo $content; ?>
+                                <?php
+                                echo $content; ?>
                             </li>
                             <?php
                         }
@@ -90,23 +95,35 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
                     <?php
                 } else {
                     ?>
-                    <p><?php echo $contents[0] ?></p>
+                    <p><?php
+                        echo $contents[0] ?></p>
                     <?php
                 }
                 ?>
 
                 <p>
-                    <a class="<?php echo $link_class ?>" href="<?php echo $link ?>">
-                        <?php echo $link_title ?>
+                    <a class="<?php
+                    echo $link_class ?>" href="<?php
+                    echo $link ?>">
+                        <?php
+                        echo $link_title ?>
                     </a>
                 </p>
 
                 <?php
-                if (! empty($image) && file_exists(__DIR__ . '/assets/images/' . $image)) {
+                if (! empty($image) && $assetsHandler->fileIsReadable(
+                        'publishpress/wordpress-banners',
+                        'assets/images/' . $image
+                    )) {
                     ?>
                     <div class="pp-box-banner-image">
-                        <a href="<?php echo $link ?>">
-                            <img src="<?php echo plugin_dir_url(__FILE__) . 'assets/images/' . $image ?>" title="<?php
+                        <a href="<?php
+                        echo $link ?>">
+                            <img src="<?php
+                            echo $assetsHandler->getAssetUrl(
+                                'publishpress/wordpress-banners',
+                                'assets/images/' . $image
+                            ); ?>" title="<?php
                             echo $title ?>"/>
                         </a>
                     </div>
@@ -119,7 +136,7 @@ if (! class_exists('\\PublishPress\\WordPressBanners\\BannersMain')) {
             <?php
             wp_enqueue_style(
                 'pp-wordpress-banners-style',
-                plugin_dir_url(__FILE__) . 'assets/css/style.css',
+                $assetsHandler->getAssetUrl('publishpress/wordpress-banners', 'assets/css/style.css'),
                 false,
                 PP_WP_BANNERS_VERSION
             );
